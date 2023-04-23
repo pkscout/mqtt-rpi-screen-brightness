@@ -1,7 +1,6 @@
 import resources.config as config
 from resources.lib.screens import RPiTouchscreen
 from resources.lib.xlogger import Logger
-import random
 import os
 from paho.mqtt import client as mqtt_client
 from paho.mqtt import subscribe as mqtt_subscribe
