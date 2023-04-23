@@ -41,11 +41,14 @@ The username needed if authentication is required for your MQTT broker.
 * `mqtt_pass = <str>` (default `mqtt_password`)  
 The password needed if authentication is required for your MQTT broker.
 
-* `mqtt_clientid = <str>` (default `lightsensor`)  
+* `mqtt_clientid = <str>` (default `brightness-listener`)  
 The client ID provided to the MQTT broker.
 
 * `mqtt_qos = <int>` (default `1`)  
 By default the script uses quality of service level 1 to talk to the broker.  You can change that here to `0` or `2`, but be aware that QOS 0 sometimes does not read retained messages.
+
+* `mqtt_topic = <str>` (default `EMPTY`)  
+The topic to which you need to subscribe to get the brightness.  The script expects the payload to be a string representation of an integer.
 
 * `logbackups = <int>` (default `1`)  
 The number of days of logs to keep.
