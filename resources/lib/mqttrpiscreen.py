@@ -59,4 +59,7 @@ class Main:
             brightness = int(payload)
         except ValueError:
             brightness = 100
+            self.LW.log(
+                ['Error setting %s to int, setting brightness to 100' % str(payload)])
+        self.LW.log(['Setting brightness to %s' % str(brightness)])
         self.SCREEN.SetBrightness(brightness=brightness)
