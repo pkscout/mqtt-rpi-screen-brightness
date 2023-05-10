@@ -2,6 +2,7 @@ import resources.config as config
 from resources.lib.screens import RPiTouchscreen
 from resources.lib.xlogger import Logger
 import os
+import time
 from paho.mqtt import client as mqtt_client
 from paho.mqtt import subscribe as mqtt_subscribe
 
@@ -39,7 +40,17 @@ class Main:
         client.username_pw_set(config.Get('mqtt_user'),
                                config.Get('mqtt_pass'))
         client.on_connect = on_connect
-        client.connect(config.Get('mqtt_host'), config.Get('mqtt_port'))
+        success = False
+        while not success:
+            try:
+                success = True
+                client.connect(config.Get('mqtt_host'),
+                               config.Get('mqtt_port'))
+            except OSError:
+                success = False
+                self.LW.log([
+                    'Failed to connect due to network issue, trying again in 5 seconds'])
+                time.sleep(5)
         return client
 
     def _subscribe(self, client: mqtt_client):

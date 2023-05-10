@@ -1,2 +1,5 @@
+v.0.1.0
+- fix so that script doesn't crash at startup if network is unavailable
+
 v 0.0.1
 - initial code
