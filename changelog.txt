@@ -1,3 +1,6 @@
+v.0.2.0
+- fix so script resubscribes to topic on a reconnect
+
 v.0.1.0
 - fix so that script doesn't crash at startup if network is unavailable
 

@@ -22,7 +22,6 @@ class Main:
                     str(config.Get('debug'))], 'info')
         self.SCREEN = self._pick_screen()
         client = self._connect_mqtt()
-        self._subscribe(client)
         try:
             client.loop_forever()
         except KeyboardInterrupt:
@@ -36,6 +35,7 @@ class Main:
                 self.LW.log(["Connected to MQTT Broker!"])
             else:
                 self.LW.log(["Failed to connect, return code %d\n", rc])
+            self._subscribe(client)
         client = mqtt_client.Client(config.Get('mqtt_clientid'))
         client.username_pw_set(config.Get('mqtt_user'),
                                config.Get('mqtt_pass'))
